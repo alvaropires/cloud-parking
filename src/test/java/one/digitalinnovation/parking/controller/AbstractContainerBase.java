@@ -20,7 +20,7 @@ public abstract class AbstractContainerBase {
 
 
     static {
-        POSTGRE_SQL_CONTAINER  = new PostgreSQLContainer("postgres:10-alpine");
+        POSTGRE_SQL_CONTAINER  = new PostgreSQLContainer("postgres:15.1");
         POSTGRE_SQL_CONTAINER.start();
         System.setProperty("spring.datasource.url", POSTGRE_SQL_CONTAINER.getJdbcUrl());
         System.setProperty("spring.datasource.driverClassName", POSTGRE_SQL_CONTAINER.getDriverClassName());
