@@ -2,8 +2,6 @@ package one.digitalinnovation.parking.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
-import io.swagger.v3.oas.models.annotations.OpenAPI30;
 import one.digitalinnovation.parking.controller.dto.ParkingCreateDTO;
 import one.digitalinnovation.parking.controller.dto.ParkingDTO;
 import one.digitalinnovation.parking.controller.mapper.ParkingMapper;
@@ -13,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -79,7 +76,7 @@ public class ParkingController {
     @Operation(description = "exit parking")
     public ResponseEntity<ParkingDTO> exit(@PathVariable String id){
 
-        Parking parking = parkingService.exit(id);
+        Parking parking = parkingService.checkOut(id);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
