@@ -3,6 +3,7 @@ package one.digitalinnovation.parking.controller;
 import net.bytebuddy.utility.dispatcher.JavaDispatcher;
 import org.intellij.lang.annotations.JdkConstants;
 import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,8 +16,8 @@ import org.testcontainers.utility.DockerImageName;
 @Component
 public abstract class AbstractContainerBase {
 
-    @ClassRule
-    static final PostgreSQLContainer<?> POSTGRE_SQL_CONTAINER;
+    @Rule
+    public static final PostgreSQLContainer POSTGRE_SQL_CONTAINER;
 
 
     static {

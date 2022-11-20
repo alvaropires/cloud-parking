@@ -31,6 +31,8 @@ class ParkingControllerIT extends AbstractContainerBase{
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth()
+                .basic("dio","dio" )
                 .when()
                 .get("/parking")
                 .then()
@@ -41,13 +43,18 @@ class ParkingControllerIT extends AbstractContainerBase{
     @Test
     void whenCreateThenCheckIsCreated() {
 
-        var createDTO = new ParkingCreateDTO();
+        ParkingCreateDTO createDTO = new ParkingCreateDTO();
+
+
         createDTO.setColor("AMARELO");
         createDTO.setLicense("WRT-5555");
         createDTO.setModel("BRASILIA");
         createDTO.setState("DF");
 
         RestAssured.given()
+                .when()
+                .auth()
+                .basic("dio","dio")
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)
