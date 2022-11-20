@@ -70,7 +70,7 @@ public class ParkingService{
     @Transactional
     public Parking checkOut(String id) {
         Parking parking = findById(id);
-        parking.setExitDate(LocalDateTime.now().plusHours(5));
+        parking.setExitDate(LocalDateTime.now());
         parking.setBill(ParkingCheckOut.getBill(parking));
         // TODO para fins de teste, foi alocado 7,0 horas de estacionamento
         //TODO preço foi estipulado em 5.0 por hora, deve ser lançado
