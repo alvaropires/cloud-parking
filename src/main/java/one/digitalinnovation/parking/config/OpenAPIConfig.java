@@ -1,17 +1,36 @@
 package one.digitalinnovation.parking.config;
 
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.security.SecuritySchemes;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import org.apache.tomcat.websocket.BasicAuthenticator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configurers.SecurityContextConfigurer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
+//@OpenAPIDefinition(
+//        security = {@SecurityRequirement(name = "basicAuth")})
+@OpenAPIDefinition(security = @SecurityRequirement(name = "apiKey"))
+@SecurityScheme(type = SecuritySchemeType.HTTP, name = "basicAuth", scheme = "basic")
+
 public class OpenAPIConfig {
+
 
 
     @Bean

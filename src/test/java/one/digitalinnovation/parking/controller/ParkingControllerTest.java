@@ -9,13 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.testcontainers.containers.PostgreSQLContainer;
-
-import java.awt.*;
-import java.net.CacheRequest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ParkingControllerIT extends AbstractContainerBase{
+class ParkingControllerTest extends AbstractContainerBase{
 
 
     @LocalServerPort
@@ -32,7 +28,7 @@ class ParkingControllerIT extends AbstractContainerBase{
     void whenFindAllThenCheckResult() {
         RestAssured.given()
                 .auth()
-                .basic("dio","dio" )
+                .basic("user","dio@1234" )
                 .when()
                 .get("/parking")
                 .then()
@@ -54,7 +50,7 @@ class ParkingControllerIT extends AbstractContainerBase{
         RestAssured.given()
                 .when()
                 .auth()
-                .basic("dio","dio")
+                .basic("user","dio@1234")
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)

@@ -13,7 +13,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-@Component
+@Configuration
 public abstract class AbstractContainerBase {
 
     @Rule
